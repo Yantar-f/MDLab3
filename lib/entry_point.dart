@@ -5,28 +5,44 @@ import 'package:mdlab3/profile_page.dart';
 import 'package:mdlab3/settings_page.dart';
 
 class EntryPoint extends StatelessWidget {
-  const EntryPoint({super.key});
+  const EntryPoint(this._username, {super.key});
+
+  final String _username;
 
   @override
-  Widget build(BuildContext context) {
-    return DefaultTabController(
-        length: 2,
-        child: Scaffold (
-          backgroundColor: Theme.of(context).colorScheme.background,
-          appBar:  AppBar(
-            leadingWidth: double.maxFinite,
-            leading: const Header('Екатерина', 'assets/images/profile_photo.png'),
-            shadowColor: Colors.black.withAlpha(80),
-            elevation: 10,
-            surfaceTintColor: Colors.white,
-            bottom: TabBar(
+  Widget build(BuildContext context) =>  DefaultTabController(
+    length: 2,
+    child: Scaffold (
+      backgroundColor: Theme.of(context).colorScheme.background,
+      body: NestedScrollView(
+        floatHeaderSlivers: true,
+        headerSliverBuilder: (context, innerBoxIsScrolled) => [
+          SliverAppBar(
+            toolbarHeight: 240,
+            centerTitle: true,
+            title: Column(
+              children: [
+                Header('assets/images/profile_photo.png'),
+                Text(
+                  _username,
+                  style: const TextStyle(
+                      fontSize: 25,
+                      fontWeight: FontWeight.w800
+                  ),
+                ),
+              ],
+            ),
+            pinned: true,
+            floating: true,
+            snap: true,
+            bottom:  TabBar(
               indicatorSize: TabBarIndicatorSize.tab,
               indicatorColor: Theme.of(context).primaryColor,
               labelStyle: const TextStyle(
                 fontSize: 15,
                 fontWeight: FontWeight.w500,
                 color: Colors.black,
-              ),
+                  ),
               unselectedLabelStyle: const TextStyle(
                 fontSize: 15,
                 fontWeight: FontWeight.w500,
@@ -37,16 +53,17 @@ class EntryPoint extends StatelessWidget {
                 Tab(child: Text('Настройки'))
               ],
             ),
-          ),
-          body: const TabBarView (
-            children: [
-              ProfilePage(),
-              SettingsPage(),
-            ],
           )
+        ],
+        body: const TabBarView (
+          children: [
+            ProfilePage(),
+            SettingsPage(),
+          ],
+        ),
       ),
-    );
-  }
+    ),
+  );
 }
 
 class DescribedTitle extends StatelessWidget {

@@ -11,7 +11,11 @@ class App extends StatelessWidget {
         primaryColor: const Color.fromRGBO(8, 166, 82, 1),
         useMaterial3: true,
       ),
-      home: const EntryPoint(),
+      home:  EntryPoint(getUsername()),
     );
   }
+}
+
+String getUsername() {
+  return 'Екатерина';
 }

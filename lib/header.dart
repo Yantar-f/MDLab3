@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 
 class Header extends StatelessWidget {
-  const Header(this._username, this._profilePhotoID, {super.key});
+  const Header(this._profilePhotoID, {super.key});
 
-  final String _username;
   final String _profilePhotoID;
 
   @override
@@ -27,13 +26,6 @@ class Header extends StatelessWidget {
               _profilePhotoID,
               width: 140.0,
               height: 140.0,
-            ),
-            Text(
-              _username,
-              style: const TextStyle(
-                fontSize: 25,
-                fontWeight: FontWeight.w800
-              ),
             ),
         ],
     );
