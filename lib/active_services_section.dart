@@ -14,7 +14,7 @@ class ActiveServicesList extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         children: [
           if (activeServices.isNotEmpty) Padding(
-            padding: const EdgeInsets.only(top: 10, bottom: 15),
+            padding: const EdgeInsets.only(top: 15, bottom: 15),
             child: ActiveService(activeServices.first),
           ),
           for (int i = 1; i < activeServices.length; ++i) Padding(
@@ -51,7 +51,14 @@ class ActiveService extends StatelessWidget {
           children: [
             Row(
               children: [
-                //Image.asset(_data.serviceImgUrl),
+                Padding(
+                  padding: const EdgeInsets.only(right: 10),
+                  child: CircleAvatar(
+                    backgroundColor: Colors.grey.withAlpha(20),
+                    backgroundImage: AssetImage(_data.serviceImgUrl),
+                    radius: 20,
+                  ),
+                ),
                 Text(
                   _data.serviceName,
                   style: const TextStyle(

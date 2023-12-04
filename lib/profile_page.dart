@@ -40,8 +40,8 @@ class ProfilePage extends StatelessWidget {
 
 List<ActiveServiceEntity> getActiveServices() {
   return [
-    ActiveServiceEntity('СберПрайм', '', 'Платёж 9 июля', 199),
-    ActiveServiceEntity('Переводы', '', 'Автопродление 21 августа', 199)
+    ActiveServiceEntity('СберПрайм', 'assets/images/sber_logo.png', 'Платёж 9 июля', 199),
+    ActiveServiceEntity('Переводы', 'assets/images/sber_chetko.png', 'Автопродление 21 августа', 199)
   ];
 }
 
