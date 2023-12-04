@@ -18,11 +18,14 @@ class EntryPoint extends StatelessWidget {
         floatHeaderSlivers: true,
         headerSliverBuilder: (context, innerBoxIsScrolled) => [
           SliverAppBar(
+            elevation: 5,
+            shadowColor: Colors.black,
+            surfaceTintColor: Colors.white,
             toolbarHeight: 240,
             centerTitle: true,
             title: Column(
               children: [
-                Header('assets/images/profile_photo.png'),
+                const Header('assets/images/profile_photo.png'),
                 Text(
                   _username,
                   style: const TextStyle(
@@ -34,7 +37,7 @@ class EntryPoint extends StatelessWidget {
             ),
             pinned: true,
             floating: true,
-            snap: true,
+            snap: false,
             bottom:  TabBar(
               indicatorSize: TabBarIndicatorSize.tab,
               indicatorColor: Theme.of(context).primaryColor,
@@ -42,7 +45,7 @@ class EntryPoint extends StatelessWidget {
                 fontSize: 15,
                 fontWeight: FontWeight.w500,
                 color: Colors.black,
-                  ),
+              ),
               unselectedLabelStyle: const TextStyle(
                 fontSize: 15,
                 fontWeight: FontWeight.w500,

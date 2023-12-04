@@ -9,16 +9,19 @@ class ActiveServicesList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 100,
-      child: ListView.builder(
-        itemCount: activeServices.length,
+      height: 170,
+      child: ListView(
         scrollDirection: Axis.horizontal,
-        itemBuilder: (context, index) {
-          return Container(
-            padding: const EdgeInsets.all(5),
-            child: ActiveService(activeServices[index])
-          );
-        },
+        children: [
+          if (activeServices.isNotEmpty) Padding(
+            padding: const EdgeInsets.only(top: 10, bottom: 15),
+            child: ActiveService(activeServices.first),
+          ),
+          for (int i = 1; i < activeServices.length; ++i) Padding(
+            padding: const EdgeInsets.only(left: 10, top: 15, bottom: 15),
+            child: ActiveService(activeServices[i]),
+          ),
+        ],
       ),
     );
   }
@@ -31,34 +34,49 @@ class ActiveService extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration:
-      BoxDecoration(
-        color: Colors.white,
-        borderRadius: const BorderRadius.all(
-          Radius.circular(12.0),
-        ),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withAlpha(20),
-            blurRadius: 16,
-            blurStyle: BlurStyle.outer
-          )
-        ]
-      ),
-      child: Column(
-        children: [
-          Row(
-            children: [
-              //Image.asset(_data.serviceImgUrl),
-              Text(_data.serviceName)
-            ],
+    return ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          padding: const EdgeInsets.all(20),
+          fixedSize: const Size(250, 150),
+          surfaceTintColor: Colors.white,
+          elevation: 10,
+          shadowColor: Colors.black.withAlpha(80),
+          maximumSize: Size.copy(const Size(250, 150)),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15)
           ),
-          Text(_data.addInfo),
-          Text(_data.pricePerMonth.toString())
-        ],
-      )
+        ),
+        onPressed: () {/*OPEN ACTIVE SERVICE*/},
+        child: Column(
+          children: [
+            Row(
+              children: [
+                //Image.asset(_data.serviceImgUrl),
+                Text(
+                  _data.serviceName,
+                  style: const TextStyle(
+                    color: Colors.black,
+                    fontSize: 20,
+                  )
+                )
+              ],
+            ),
+            Text(
+              _data.addInfo,
+              style: const TextStyle(
+                color: Colors.black,
+                fontSize: 16
+              ),
+            ),
+            Text(
+              '${_data.pricePerMonth} Р в месяц',
+              style: const TextStyle(
+                color: Colors.grey,
+                fontSize: 15
+              ),
+            )
+          ],
+        )
     );
   }
-  
 }
