@@ -48,6 +48,7 @@ class ActiveService extends StatelessWidget {
         ),
         onPressed: () {/*OPEN ACTIVE SERVICE*/},
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
