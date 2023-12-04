@@ -48,6 +48,7 @@ class ActiveService extends StatelessWidget {
         ),
         onPressed: () {/*OPEN ACTIVE SERVICE*/},
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
               children: [
@@ -68,20 +69,25 @@ class ActiveService extends StatelessWidget {
                 )
               ],
             ),
-            Text(
-              _data.addInfo,
-              style: const TextStyle(
-                color: Colors.black,
-                fontSize: 16
-              ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  _data.addInfo,
+                  style: const TextStyle(
+                      color: Colors.black,
+                      fontSize: 16
+                  ),
+                ),
+                Text(
+                  '${_data.pricePerMonth} Р в месяц',
+                  style: const TextStyle(
+                      color: Colors.grey,
+                      fontSize: 15
+                  ),
+                )
+              ],
             ),
-            Text(
-              '${_data.pricePerMonth} Р в месяц',
-              style: const TextStyle(
-                color: Colors.grey,
-                fontSize: 15
-              ),
-            )
           ],
         )
     );
